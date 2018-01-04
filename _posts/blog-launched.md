@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Blog launched"
+title: "blog launched"
 date: 2018-01-04
 ---
 
