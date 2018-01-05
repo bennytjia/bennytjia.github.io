@@ -1,9 +1,14 @@
 ---
 layout: default
-title: Hank Quinlan, Horrible Cop
+title: Thoughts on tech, finance, and anything in between
 ---
 
-		<div class="blurb">
-			<h1>Hi there, I'm Hank Quinlan!</h1>
-			<p>I'm best known as the horrible cop from <em>A Touch of Evil</em>. Don't trust me. <a href="/about">Read more about my life...</a></p>
-		</div> 
+<div class="blurb">
+  <h1>Benny Tjia's page</h1>
+	<p>I'm an ex-tech founder (1 exit) and software engineer. I'm currently a graduate student in finance graduating in Q3 2018. In this page, I write about anything I find interesting and worth exploring, such as tech, finance, and anything in between.</p>
+	<ul class="posts">
+	  {% for post in site.posts %}
+	    <li><span class="date">{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% endfor %}
+	</ul>
+</div><!-- /.blurb -->
