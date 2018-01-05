@@ -1,2 +1,2 @@
 # bennytjia.github.io
-Personal blog -- Tech, finance, and anything in between
+Thoughts on tech, finance, and anything in between
