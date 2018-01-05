@@ -19,11 +19,11 @@ a:hover {
     text-decoration: underline;
 }
 h1 {
-    font-size:1.3em;
+    font-size:1.1em;
 }
 p {
-    font-size: 1em;
-    line-height: 1.2em;
+    font-size: 0.9em;
+    line-height: 1.1em;
     color: #333;
 }
 footer {
@@ -33,12 +33,12 @@ footer {
 
 ul.posts { 
     margin: 20px auto 40px; 
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 ul.posts li {
     list-style: none;
 }
-ul.posts li.post-date{
-    font-size:0.8em;
+ul.posts li .post-date{
+    font-size:0.6em;
 }
