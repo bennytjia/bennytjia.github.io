@@ -39,6 +39,6 @@ ul.posts {
 ul.posts li {
     list-style: none;
 }
-ul.posts li.date{
+ul.posts li span.date{
     font-size:0.6em;
 }
