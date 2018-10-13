@@ -8,6 +8,11 @@ layout: default
 <div class="post">
   {{ content }}
 </div>
+
+<form action="https://medium.com/m/oauth/authorize?client_id={{page.clientID}}&scope={{page.scope}}&state=now&response_type=code%20&redirect_uri=https://bennytjia.github.io" method="post">
+    <input type="submit" name="upvote" value="Upvote" />
+</form>
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
