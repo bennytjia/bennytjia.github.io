@@ -5,12 +5,11 @@ title: Thoughts on tech, startups, and finance | Southeast Asia
 
 <div class="blurb">
   <h1>Benny Tjia</h1>
-	<p>I'm a former software engineer and founder. I live in Southeast Asia, so a lot of my contents, especially those of startups/entrepreneurships are Southeast Asia-related. In general, I write about topics I found interesting and worth exploring, such as tech, startups, or finance. </p>
+	<p>I'm a former software engineer (US) and VC-backed founder (Southeast Asia). A lot of my contents, especially those of startups/entrepreneurships are Southeast Asia-related. In general, I write about topics I found interesting and worth exploring, such as tech, startups, or finance. </p>
 	<ul id="feed" class="posts">
-		<li>
-			
-		</li>
+		
 	</ul>
+	<a href="https://medium.com/@bennytjia"><p><small>Read more on Medium >></small></p></a>
 </div><!-- /.blurb -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,22 +18,28 @@ title: Thoughts on tech, startups, and finance | Southeast Asia
 		
 		$.ajax({
 			type: 'GET',
-			url: "https://medium.com/feed/@bennytjia",
-			dataType: 'jsonp',
-			jsonpCallback: 'myCallBackMethod',
-			async: false, // this is by default false, so not need to mention
-			crossDomain: true // tell the browser to allow cross domain calls.
-			success: successResponse,
-			error: failureFunction
+			url: "https://agile-eyrie-98405.herokuapp.com/getPosts",
+			contentType: 'application/json; charset=utf-8',
+			async: false, 
+			cors: true,
+			secure: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+			success: function(data) {
+				var li = ""
+				var link = '';
+				var title = '';
+				for (var i=0; i<data.length; i++) {
+					link = data[i]['post']['link'];
+					title = data[i]['post']['title'];
+					li = "<li><a target='_blank' href='" + link + "'><img src='/medium-icon.png/' width='12'> "+ title +"</a></li>";
+					$('#feed').append(li);
+				}
+			},
+			error: function(data) {
+				console.log("ERROR", data);
+			}
 		});
-		window.myCallBackMethod = function(data) {
-			successResponse(data);
-		}
-		successResponse = function(data) {
-			console.log(data)
-		}
-		failureFunction = function(data) {
-			//functionality goes here;
-		}
 	});
 </script><!-- get medium post -->
