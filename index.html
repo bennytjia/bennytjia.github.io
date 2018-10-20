@@ -5,7 +5,9 @@ title: Thoughts on tech, startups, and finance | Southeast Asia
 
 <div class="blurb">
   <h1>Benny Tjia</h1>
-	<p>I'm a former software engineer in US and VC-backed founder in Southeast Asia. A lot of my contents, especially those of startups/entrepreneurships are Southeast Asia-related. In general, I write about topics I found interesting and worth exploring, such as tech, startups, or finance/investments. My background is computer science (undergrad) and finance (master's). I'm also a CFA candidate (passed level I). All opinions are my own.</p>
+	<p>I'm a former software engineer and VC-backed founder. A lot of my contents, especially those of startups/entrepreneurships are Southeast Asia-related. In general, I write about topics I found interesting and worth exploring, such as tech, startups, or finance/investments. My background is computer science (undergrad) and finance (master's). I'm also a CFA candidate (passed level I). All opinions are my own.</p>
+	
+	<p><strong>Latest posts:</strong></p>
 	<ul id="feed" class="posts">
 		<li id="filler">Loading latest medium posts ...</li>
 	</ul>
@@ -15,24 +17,26 @@ title: Thoughts on tech, startups, and finance | Southeast Asia
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"> 
 	$(document).ready(function(){
-		
 		$.ajax({
 			type: 'GET',
-			url: "https://agile-eyrie-98405.herokuapp.com/getPosts",
-			contentType: 'application/json; charset=utf-8',
+			url: "https://cors-anywhere.herokuapp.com/https://medium.com/feed/@bennytjia",
 			async: true, 
 			cors: true,            
 			success: function(data) {
+				var xml = $(data);
+				var $xmldoc = $(xml);
 				$("#filler").remove();
-				var li = ""
-				var link = '';
-				var title = '';
-				for (var i=0; i<data.length; i++) {
-					link = data[i]['post']['link'];
-					title = data[i]['post']['title'];
+				
+				var $item = $xmldoc.find("item");
+				var title, link, li =""; 
+				
+				$item.each(function (index) {
+					title = $(this).find("title").text();
+					link = $(this).find("link").text();
 					li = "<li><a target='_blank' href='" + link + "'> "+ title +"</a></li>";
 					$('#feed').append(li);
-				}
+				});
+				$('#feed').append("<p>Complete list on <a target='_blank' href='https://medium.com/@bennytjia'>Medium.</a></p>");
 			},
 			error: function(data) {
 				console.log("ERROR", data);
