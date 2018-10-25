@@ -44,3 +44,9 @@ ul.posts li {
 ul.posts li span.date{
     font-size:0.7em;
 }
+.ui-progressbar{
+    height:0.6em !important;
+}
+#progressbar{
+    width: 50% !important;
+}
